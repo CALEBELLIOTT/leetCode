@@ -1,32 +1,5 @@
 // Area to solve leetcode problems in a normal environment
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-
-
-
-//  You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
-
-//  You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-
-var addTwoNumbers = function (l1, l2) {
-  let reversed = l1.reverse()
-  reversed = reversed.join("")
-  let reversed2 = l2.reverse()
-  reversed2 = parseInt(reversed2.join(""))
-  let total = reversed + reversed2
-  console.log(total);
-  total = total.split("")
-  console.log(total);
-
-};
-
-
 // SECTION leetcode 1 - 2 sum
 
 // addTwoNumbers([2, 0, 5], [3, 8, 5])
@@ -93,12 +66,35 @@ function twoSumHashMap(nums, target) {
   return solution
 }
 
-console.log(twoSumHashMap([1, 4, 2, 3, 8, 9], 6))
+// console.log(twoSumHashMap([1, 4, 2, 3, 8, 9], 6))
 
 // console.log(twoSum([5, 3, 2, 5, 1,], 8));
 
 
 
+
+
+
+// SECTION leetCode 2 - add two numbers
+
+// You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+// Input: l1 = [2,4,3], l2 = [5,6,4]
+// Output: [7,0,8]
+// Explanation: 342 + 465 = 807.
+
+
+function addTwoNumbers(l1, l2) {
+  l1 = parseInt(l1.reverse().join(''))
+  l2 = parseInt(l2.reverse().join(''))
+  let sum = l1 + l2
+  sum = Array.from(sum.toString()).map(Number).reverse()
+  return sum
+}
+
+console.log(addTwoNumbers([7, 0, 2], [9, 4, 3]))
 
 
 
