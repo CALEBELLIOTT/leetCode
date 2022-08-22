@@ -70,6 +70,8 @@ function twoSumHashMap(nums, target) {
 
 // console.log(twoSum([5, 3, 2, 5, 1,], 8));
 
+// !SECTION
+
 
 
 
@@ -94,8 +96,29 @@ function addTwoNumbers(l1, l2) {
   return sum
 }
 
-console.log(addTwoNumbers([7, 0, 2], [9, 4, 3]))
+// console.log(addTwoNumbers([7, 0, 2], [9, 4, 3]))
 
 
 
-// SECTION
+// SECTION leetCode 9 - Palindrome Number
+
+// Given an integer x, return true if x is palindrome integer.
+
+// An integer is a palindrome when it reads the same backward as forward.
+
+// For example, 121 is a palindrome while 123 is not.
+
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function (x) {
+  let reverse = parseInt(x.toString().split('').reverse().join(''))
+  console.log(reverse);
+  if (x == reverse) {
+    return true
+  } return false
+};
+
+// console.log(isPalindrome(121));
