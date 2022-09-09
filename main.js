@@ -1326,7 +1326,6 @@ function pokerHands(data) {
     for (let i = 0; i < 5; i++) {
       let nextCardSuit
       i != 4 ? nextCardSuit = cards[i + 1][1] : nextCardSuit = null
-      console.log(nextCardSuit);
       if (cards[i][1] != nextCardSuit && nextCardSuit) {
         player1Flush = false
       }
@@ -1334,9 +1333,7 @@ function pokerHands(data) {
       if (found) {
         player1HandData[found.keyName].count = player1HandData[found.keyName].count + 1
       }
-      console.log(found);
     }
-    console.log(player1Flush);
   })
 }
 
