@@ -239,7 +239,7 @@ function fibonacci(limit) {
   return (evenTotal)
 }
 
-// console.log(fibonacci(4000000))
+console.log(fibonacci(4000000))
 
 
 
@@ -294,6 +294,15 @@ function fibonacci(limit) {
 // (no invalid characters or repeated cards), each player’s hand is in no specific order, and in
 // each hand there is a clear winner.
 // How many hands does Player 1 win?
+
+
+
+steps
+1) separate hands into games and games into players and players into cards
+2) loop through cards and build map to track suits and numbers
+3) Create conditional statements to handle evaluations of hands from highest value to lowest value
+4)
+
 
 
 
@@ -1301,44 +1310,51 @@ AS KD 3D JD 8H 7C 8C 5C QD 6C`
 
 function pokerHands(data) {
   let games = data.split(/\r?\n|\r|\n/g)
-  console.log(games);
   let player1Wins = 0
   let player2Wins = 0
   games.forEach(g => {
     let cards = g.split(' ')
-    let player1Flush = true
-    let player2Flush = true
-    let player1HandData = {
-      twos: { count: 0, value: 1, cardName: 2, keyName: 'twos' },
-      threes: { count: 0, value: 2, cardName: 3, keyName: 'threes' },
-      fours: { count: 0, value: 3, cardName: 4, keyName: 'fours' },
-      fives: { count: 0, value: 4, cardName: 5, keyName: 'fives' },
-      sixes: { count: 0, value: 5, cardName: 6, keyName: 'sixes' },
-      sevens: { count: 0, value: 6, cardName: 7, keyName: 'sevens' },
-      eights: { count: 0, value: 7, cardName: 8, keyName: 'eights' },
-      nines: { count: 0, value: 8, cardName: 9, keyName: 'nines' },
-      tens: { count: 0, value: 9, cardName: 'T', keyName: 'tens' },
-      j: { count: 0, value: 10, cardName: 'J', keyName: 'j' },
-      q: { count: 0, value: 11, cardName: 'Q', keyName: 'q' },
-      k: { count: 0, value: 12, cardName: 'K', keyName: 'k' },
-      a: { count: 0, value: 13, cardName: 'A', keyName: 'a' }
-    }
-    for (let i = 0; i < 5; i++) {
-      let nextCardSuit
-      i != 4 ? nextCardSuit = cards[i + 1][1] : nextCardSuit = null
-      if (cards[i][1] != nextCardSuit && nextCardSuit) {
-        player1Flush = false
-      }
-      let found = Object.values(player1HandData).find(o => o.cardName == cards[i][0])
-      if (found) {
-        player1HandData[found.keyName].count = player1HandData[found.keyName].count + 1
-      }
-    }
+    let player1Cards = [cards[0], cards[1], cards[2], cards[3], cards[4]]
+    score(player1Cards)
   })
 }
 
+function score(cards) {
+  let order = 'A23456789TJQKA'
+  let suits = {}
+  let nums = {}
+  let sortedNums = []
 
-let trialData = `TC TC KD 9C 4C 7D 2S 5D 3S AC
+  // Build out map for hand contents
+  cards.forEach(c => {
+    let cardSuit = c[1]
+    let cardNum = c[0]
+    sortedNums.push(c[0])
+
+    if (suits[cardSuit]) {
+      suits[cardSuit]++
+    } else {
+      suits[cardSuit] = 1
+    }
+    if (nums[cardNum]) {
+      nums[cardNum]++
+    } else {
+      nums[cardNum] = 1
+    }
+  })
+  sortedNums.sort()
+
+  if (Object.keys(suits).length == 1) {
+
+  }
+
+
+  console.log(Object.keys(suits).length);
+  console.log(nums)
+}
+
+
+let trialData = `TC TC TC 9C 4C 7D 2S 5D 3S AC
 AS KD 3D JD 8H 7C 8C 5C QD 6C`
 
 
