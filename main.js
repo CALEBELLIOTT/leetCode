@@ -297,11 +297,11 @@ console.log(fibonacci(4000000))
 
 
 
-steps
-1) separate hands into games and games into players and players into cards
-2) loop through cards and build map to track suits and numbers
-3) Create conditional statements to handle evaluations of hands from highest value to lowest value
-4)
+// steps
+// 1) separate hands into games and games into players and players into cards
+// 2) loop through cards and build map to track suits and numbers
+// 3) Create conditional statements to handle evaluations of hands from highest value to lowest value
+// 4)
 
 
 
@@ -1323,13 +1323,16 @@ function score(cards) {
   let order = 'A23456789TJQKA'
   let suits = {}
   let nums = {}
+  let cardValues = {
+
+  }
   let sortedNums = []
 
   // Build out map for hand contents
   cards.forEach(c => {
     let cardSuit = c[1]
     let cardNum = c[0]
-    sortedNums.push(c[0])
+    c.push(sortedNums)
 
     if (suits[cardSuit]) {
       suits[cardSuit]++
@@ -1342,7 +1345,10 @@ function score(cards) {
       nums[cardNum] = 1
     }
   })
-  sortedNums.sort()
+
+
+
+
 
   if (Object.keys(suits).length == 1) {
 
