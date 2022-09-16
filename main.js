@@ -239,7 +239,7 @@ function fibonacci(limit) {
   return (evenTotal)
 }
 
-console.log(fibonacci(4000000))
+// console.log(fibonacci(4000000))
 
 
 
@@ -1364,4 +1364,46 @@ let trialData = `TC TC TC 9C 4C 7D 2S 5D 3S AC
 AS KD 3D JD 8H 7C 8C 5C QD 6C`
 
 
-pokerHands(trialData)
+// pokerHands(trialData)
+
+
+
+
+
+
+
+var findOriginalArray = function (changed) {
+  let sortedChanged = changed.sort((a, b) => { if (a > b) { return 1 } else { return -1 } })
+  let original = []
+  while (sortedChanged.length > 0) {
+    console.log(sortedChanged)
+    let target = sortedChanged[0]
+    let doubleTarget = sortedChanged.indexOf(target * 2)
+    if (doubleTarget == 0) {
+      if (sortedChanged[1] != 0) {
+        return ([])
+      } else {
+        original.push(target)
+        sortedChanged.splice(1, 1)
+        sortedChanged.splice(0, 1)
+        console.log(sortedChanged);
+        continue
+      }
+    }
+    console.log(doubleTarget)
+    if (doubleTarget > -1) {
+      original.push(target)
+      sortedChanged.splice(doubleTarget, 1)
+      sortedChanged.splice(0, 1)
+    }
+    else {
+      return ([])
+    }
+  }
+  return original
+};
+
+console.log(findOriginalArray(
+
+
+  [0, 0, 3]))
