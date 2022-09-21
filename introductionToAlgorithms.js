@@ -18,4 +18,25 @@ function insertionSort(inputArr) {
   return inputArr;
 }
 
-console.log(insertionSort([2, 5, 1, 2, 2, 54, 6543, 53, 32, 4, 3, 145]))
+// console.log(insertionSort([2, 5, 1, 2, 2, 54, 6543, 53, 32, 4, 3, 145]))
+
+var sumEvenAfterQueries = function (nums, queries) {
+  let answer = []
+  queries.forEach(q => {
+    let position = queries[1]
+    let value = queries[0]
+    let newNum = nums[position] + value
+    nums.splice(position, 1, newNum)
+    let sum = 0
+    nums.forEach(n => {
+      if (n % 2 == 0) {
+        sum += n
+      }
+    })
+    answer.push(sum)
+  })
+  return answer
+};
+
+console.log(sumEvenAfterQueries([1, 2, 3, 4],
+  [[1, 0], [-3, 1], [-4, 0], [2, 3]]))
