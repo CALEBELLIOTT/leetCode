@@ -23,9 +23,10 @@ function insertionSort(inputArr) {
 var sumEvenAfterQueries = function (nums, queries) {
   let answer = []
   queries.forEach(q => {
-    let position = queries[1]
-    let value = queries[0]
+    let position = q[1]
+    let value = q[0]
     let newNum = nums[position] + value
+    console.log(newNum);
     nums.splice(position, 1, newNum)
     let sum = 0
     nums.forEach(n => {
